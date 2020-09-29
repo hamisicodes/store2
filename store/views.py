@@ -16,7 +16,7 @@ def store(request):
 
     else:
         items = []
-        order = {'get_cart_total':0 , 'get_cart_items':0}
+        order = {'get_cart_total':0 , 'get_cart_items':0 , 'shippping':False}
         cart_items = order['get_cart_items']
 
 
@@ -36,7 +36,7 @@ def cart(request):
 
     else:
         items = []
-        order = {'get_cart_total':0 , 'get_cart_items':0}
+        order = {'get_cart_total':0 , 'get_cart_items':0 ,'shippping':False}
         cart_items = order['get_cart_items']
 
     context = {'items':items , 'order':order , 'cart_items': cart_items}
@@ -54,10 +54,10 @@ def checkout(request):
 
     else:
         items = []
-        order = {'get_cart_total':0 , 'get_cart_total':0}
+        order = {'get_cart_items':0 , 'get_cart_total':0 ,'shippping':False}
         cart_items = order['get_cart_items']
 
-    context = {'items':items , 'order':order , 'cart_items': cart_items}
+    context = {'items':items , 'order':order , 'cart_items': cart_items }
     return render(request,'store/checkout.html' , context)
 
 def updateItem(request):
@@ -76,15 +76,12 @@ def updateItem(request):
     if action == 'add':
         orderItem.quantity = (orderItem.quantity + 1)
     elif action == 'remove':
-        orderItem.quantity = (orderItem.quantity + 1)
+        orderItem.quantity = (orderItem.quantity - 1)
 
     orderItem.save()
 
     if orderItem.quantity <= 0:
         orderItem.delete()
-
-
-    
 
     return JsonResponse('Item was added', safe=False)
 
