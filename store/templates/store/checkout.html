@@ -78,6 +78,8 @@
     </div>
     <script src="https://www.paypal.com/sdk/js?client-id=AffGCmChhSRbGBtvT4io_bo-SQ0IcUbHcB2EyvPyv41Ho7b1aGih2IT41_Rfq5yovkBZMs_Ii7_oflrF"></script>
     <script>
+
+        let total = '{{order.get_cart_total}}'
         // Render the PayPal button into #paypal-button-container
         paypal.Buttons({
 
@@ -91,7 +93,7 @@
                 return actions.order.create({
                     purchase_units: [{
                         amount: {
-                            value: '0.01'
+                            value: parseFloat(total).toFixed(2)
                         }
                     }]
                 });
@@ -102,6 +104,7 @@
                 return actions.order.capture().then(function(details) {
                     // Show a success message to the buyer
                     alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                    submitFormData()
                 });
             }
     
