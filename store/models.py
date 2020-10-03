@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 
 class Customer(models.Model):
     user = models.OneToOneField(User, null=True , blank=True , on_delete=models.CASCADE)
@@ -7,7 +8,15 @@ class Customer(models.Model):
     email = models.CharField(max_length=200 , null=True)
 
     def __str__(self):
-        return self.name
+        return str(self.user.username)
+
+def create_customer(sender,instance,created,**kwargs):
+    if created:
+        Customer.objects.create(user = instance)
+        print('customer created')
+
+post_save.connect(create_customer, sender=User)
+
 
 class Product(models.Model):
     name = models.CharField(max_length=200)

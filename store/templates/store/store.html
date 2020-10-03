@@ -1,6 +1,9 @@
 {% extends 'store/main.html' %}
 {% load static %}
+{% load i18n %}
 
+
+{% block head_title %}{% trans "Store" %}{% endblock %}
 {% block content %}
 <div class="row">
       {% for product in products %}
