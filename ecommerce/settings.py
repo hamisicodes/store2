@@ -162,7 +162,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'static/images')
 
 LOGIN_REDIRECT_URL ='/'
 LOGOUT_REDIRECT_URL ='/'
-EMAIL_BACKEND ='django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND ='django.core.mail.backends.console.EmailBackend'
 
 cloudinary.config( 
   cloud_name = os.environ.get('CLOUDINARY_NAME'),
@@ -170,8 +170,8 @@ cloudinary.config(
   api_secret = os.environ.get('CLOUDINARY_API_SECRET'), 
 )
 
-if DEBUG == False:
-    EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+# if DEBUG == False:
+#     EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
 
 # postgres url connection
 # DATABASE_URL=postgres://{user}:{password}@{hostname}:{port}/{database-name}
