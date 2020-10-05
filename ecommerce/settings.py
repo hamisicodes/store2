@@ -49,15 +49,13 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'cloudinary'
-   
-
 
 ]
 
 SITE_ID = 1
-ACCOUNT_EMAIL_REQUIRED=True
-ACCOUNT_AUTHENTICATION_METHOD='email'
-# ACCOUNT_EMAIL_VERIFICATION='mandatory'
+# ACCOUNT_EMAIL_REQUIRED=True
+# ACCOUNT_AUTHENTICATION_METHOD='email'
+ACCOUNT_EMAIL_VERIFICATION='none'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -175,4 +173,6 @@ cloudinary.config(
 
 # postgres url connection
 # DATABASE_URL=postgres://{user}:{password}@{hostname}:{port}/{database-name}
+
+
 
