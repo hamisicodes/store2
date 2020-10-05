@@ -3,8 +3,10 @@ from .models import *
 from django.http import JsonResponse
 import json
 import datetime
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+
 
 def store(request):
     if request.user.is_authenticated:
@@ -25,6 +27,7 @@ def store(request):
     context = {'products':products ,'cart_items': cart_items}
     return render(request,'store/store.html' , context)
 
+@login_required
 def cart(request):
 
     if request.user.is_authenticated:
@@ -60,7 +63,8 @@ def checkout(request):
 
     context = {'items':items , 'order':order , 'cart_items': cart_items }
     return render(request,'store/checkout.html' , context)
-
+    
+@login_required
 def updateItem(request):
     data = json.loads(request.body)
     productId = data['productId']

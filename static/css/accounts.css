@@ -5,10 +5,12 @@ body{
 }
 
 .login{
+    
     margin-top: 3%;
     display: flex;
     flex-direction: column;
-    align-items: center;   
+    align-items: center; 
+     
 }
 
 .login-container{
@@ -19,10 +21,11 @@ body{
     border-radius: 5px;
     border: 1px solid lightgray;
     padding: 20px;
+    background-color: white; 
 }
 
 input:focus{
-    border: 1px solid blue;
+    border: 1px solid #4bcff0;
 }
 
 
@@ -44,8 +47,8 @@ input{
 
 .signInButton{
     background: #4bcff0;
-    border-radius: 2px;
-    width: 100%;
+    border-radius: 5px;
+    width: 250px;
     border: 1px solid;
     margin-top: 10px;
     border-color: #34a8a8 #31989c #297684;

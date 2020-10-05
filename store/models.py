@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
+from cloudinary.models import CloudinaryField
 
 class Customer(models.Model):
     user = models.OneToOneField(User, null=True , blank=True , on_delete=models.CASCADE)
@@ -22,7 +23,7 @@ class Product(models.Model):
     name = models.CharField(max_length=200)
     price = models.FloatField()
     digital = models.BooleanField(default=False , null=True , blank=True)
-    image = models.ImageField(null = True , blank = True)
+    image = CloudinaryField('image')
 
     @property
     def imageURL(self):
